@@ -3,64 +3,35 @@ package com.MariaBermudez;
 import com.MariaBermudez.generador.annotations.DocClase;
 import com.MariaBermudez.generador.annotations.DocElemento;
 
-@DocClase(nombre = "Persona", autor = "César", descripcion = "Clase que representa a una persona ejemplo.")
-public class Persona {
+@DocClase(nombre = "Persona", autor = "Maria Bermudez", descripcion = "Entidad para el manejo de usuarios.")
+public class Persona extends Entidad {
 
-    @DocElemento(descripcion = "Nombre de la persona")
-    private String nombre;
+    @DocElemento(name = "Nombre Completo", description = "Nombre unico del usuario")
+    private String name;
 
-    @DocElemento(descripcion = "Edad de la persona")
-    private int edad;
+    @DocElemento(name = "Edad Cronologica", description = "Edad en años")
+    private int age;
 
-    @DocElemento(descripcion = "Indica si la persona está activa")
-    private boolean activo;
-
-    public Persona() {
-        this.nombre = "Anónimo";
-        this.edad = 0;
-        this.activo = true;
+    @DocElemento(name = "Constructor Principal", description = "Crea una persona vinculada a una entidad base")
+    public Persona(int id, String name, int age) {
+        super(id);
+        this.name = name;
+        this.age = age;
     }
 
-    @DocElemento(descripcion = "Constructor con parámetros")
-    public Persona(String nombre, int edad, boolean activo) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.activo = activo;
+    @DocElemento(name = "Obtener Nombre", description = "Retorna el nombre del usuario")
+    public String getName() {
+        return name;
     }
 
-    @DocElemento(descripcion = "Obtiene el nombre")
-    public String getNombre() {
-        return nombre;
+    @DocElemento(name = "Actualizar Edad", description = "Modifica la edad del usuario")
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    @DocElemento(descripcion = "Establece el nombre")
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @DocElemento(descripcion = "Obtiene la edad")
-    public int getEdad() {
-        return edad;
-    }
-
-    @DocElemento(descripcion = "Establece la edad")
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    @DocElemento(descripcion = "Indica si está activo")
-    public boolean isActivo() {
-        return activo;
-    }
-
-    @DocElemento(descripcion = "Establece estado activo")
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
-    @DocElemento(descripcion = "Ejemplo de método que devuelve saludo")
-    public String saludar(String quien) {
-        return "Hola " + quien + ", soy " + nombre;
+    @DocElemento(name = "Obtener ID Personalizado", description = "Retorna el ID heredado pero con logica propia")
+    @Override
+    public int getId() {
+        return super.getId();
     }
 }
-
